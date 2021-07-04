@@ -48,5 +48,5 @@ export class ImageService {
                 cb(null, file.originalname);
             }
         })
-    });
+    }).array('upload',1);
 }

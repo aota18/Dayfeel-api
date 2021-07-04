@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ImageModule } from './image/image.module';
+import { WeatherCondition } from './weather/entities/weather-condition.entity';
+import { WeatherMain } from './weather/entities/weather-main.entity';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
@@ -21,14 +22,16 @@ import { ImageModule } from './image/image.module';
         logging: true,
         autoLoadEntities: true,
         entities: [
-          __dirname + '/../**/*.entity.ts',
+          WeatherCondition,
+          WeatherMain
         ],
-        synchronize: true,
+        synchronize: false,
       
     }),
-    ImageModule
+    ImageModule,
+    WeatherModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
