@@ -100,14 +100,7 @@ pipeline {
             }
 
             post {
-                success {
-                    slackSend (channel: 'deploy-alert', color: '#00FF00', message: "Successfully Deployed! : Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})")
-                }
-                failure {
-                    success {
-                    slackSend (channel: 'deploy-alert', color: '##FF0000', message: "Deploy Failed! : Job ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})")
-                }
-                }
+            
             }
         }
 
