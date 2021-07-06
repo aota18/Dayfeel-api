@@ -10,7 +10,7 @@ import { WeatherModule } from './weather/weather.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: process.env.NODE_ENV ==='production' ? '/usr/share/.prod.env' : '.dev.env'
+      envFilePath: '.dev.env'
     }),
     TypeOrmModule.forRoot({
         type: 'postgres',
