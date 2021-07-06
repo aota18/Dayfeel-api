@@ -79,7 +79,7 @@ pipeline {
 
         steps {
             dir('./'){
-                sh 'docker build . -t backend'
+                sh 'docker build . -t weather-forecast-api'
             }
         }
     }
