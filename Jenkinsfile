@@ -99,9 +99,7 @@ pipeline {
 
             }
 
-            post {
-                echo 'Done!'
-            }
+          
         }
 
     
