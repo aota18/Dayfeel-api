@@ -100,7 +100,7 @@ pipeline {
             }
 
             post {
-            
+                echo 'Done!'
             }
         }
 
