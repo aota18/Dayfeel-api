@@ -5,3 +5,4 @@ WORKDIR /app
 COPY . .
 
 CMD ["npm", "run", "start:prod"]
+
