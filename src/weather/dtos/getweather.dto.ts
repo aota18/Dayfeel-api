@@ -12,6 +12,7 @@ export class GetWeatherOutput extends CoreOutput {
         description: string;
         icon: string;
         temp: string;
+        humidity: string;
         country: string;
         city: string;
     }
