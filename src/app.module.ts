@@ -36,6 +36,6 @@ import { WeatherModule } from './weather/weather.module';
 })
 export class AppModule {
   constructor(){
-    console.log(process.env)
+    console.log(process.cwd())
   }
 }
