@@ -10,7 +10,7 @@ import { WeatherModule } from './weather/weather.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.dev.env'
+      envFilePath: '/usr/share/.prod.env'
     }),
     TypeOrmModule.forRoot({
         type: 'postgres',
@@ -37,5 +37,9 @@ import { WeatherModule } from './weather/weather.module';
 export class AppModule {
   constructor(){
     console.log(process.cwd())
+
+    console.log(process.env)
+
+    
   }
 }
