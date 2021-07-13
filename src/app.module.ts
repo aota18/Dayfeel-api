@@ -5,12 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WeatherCondition } from './weather/entities/weather-condition.entity';
 import { WeatherMain } from './weather/entities/weather-main.entity';
 import { WeatherModule } from './weather/weather.module';
+import { UsersModule } from './users/users.module';
+import { PlacesModule } from './places/places.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '/usr/share/.prod.env'
+      envFilePath: process.env.NODE_ENV==='development' ? '.dev.env' : '/usr/share/.prod.env'
     }),
     TypeOrmModule.forRoot({
         type: 'postgres',
@@ -23,23 +26,23 @@ import { WeatherModule } from './weather/weather.module';
         autoLoadEntities: true,
         entities: [
           WeatherCondition,
-          WeatherMain
+          WeatherMain,
+          User
         ],
-        synchronize: false,
+        synchronize: true,
       
     }),
     // ImageModule,
-    WeatherModule
+    WeatherModule,
+    UsersModule,
+    PlacesModule
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {
   constructor(){
-    console.log(process.cwd())
 
-    console.log(process.env)
-
-    
+    console.log(process.env.NODE_ENV)
   }
 }

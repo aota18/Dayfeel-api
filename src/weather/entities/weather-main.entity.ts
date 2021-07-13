@@ -11,6 +11,8 @@ export class WeatherMain {
     id: number;
 
     
-    @Column()
-    name: string;
+    @Column({
+        nullable: true
+    })
+    name?: string;
 }

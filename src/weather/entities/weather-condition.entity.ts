@@ -15,12 +15,12 @@ export class WeatherCondition {
     @JoinColumn({ name: 'main'})
     main: WeatherMain;
 
-    @Column()
+    @Column({nullable: true})
     description: string;
 
-    @Column()
+    @Column({ nullable: true})
     icon: string;
 
-    @Column()
+    @Column({nullable: true})
     img_url: string;
 }
