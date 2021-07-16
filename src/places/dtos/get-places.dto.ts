@@ -6,5 +6,5 @@ export class GetPlacesInput {
 }
 
 export class GetPlacesOutput extends CoreOutput{
-    places?: Place[]
+    places?: any[]
 }

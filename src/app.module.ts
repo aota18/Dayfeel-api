@@ -3,7 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // import { ImageModule } from './image/image.module';
 import { WeatherCondition } from './weather/entities/weather-condition.entity';
-import { WeatherMain } from './weather/entities/weather-main.entity';
 import { WeatherModule } from './weather/weather.module';
 import { UsersModule } from './users/users.module';
 import { PlacesModule } from './places/places.module';
@@ -26,7 +25,7 @@ import { User } from './users/entities/user.entity';
         autoLoadEntities: true,
         entities: [
           WeatherCondition,
-          WeatherMain,
+       
           User
         ],
         synchronize: true,

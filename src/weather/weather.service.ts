@@ -30,17 +30,18 @@ export class WeatherService {
           const queryResult = await this. weatherConditionRepository.createQueryBuilder('weather_condition')
           .select('weather_condition.id', 'id')
           .addSelect('weather_condition.img_url', 'imgUrl')
-          .addSelect('weather_condition.description', 'description')
-          .addSelect('weather_condition.icon', 'icon')
-          .addSelect('weather_main.name', 'main')
-          .innerJoin('weather_main', 'weather_main', 'weather_main.id::varchar=weather_condition.main')
           .where({
             id: res.data.weather[0].id
             })
-          .getRawOne()
+          .getRawOne();
+
+          console.log(queryResult);
 
           let result = {
               ...queryResult,
+              main: res.data.weather[0].main,
+              description:res.data.weather[0].description,
+              icon:res.data.weather[0].icon,
               temp: res.data.main.temp,
               humidity: res.data.main.humidity,
               country: res.data.sys.country,

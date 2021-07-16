@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreatePlaceInput, CreatePlaceOutput } from './dtos/create-place.dto';
 import { GetPlacesInput, GetPlacesOutput } from './dtos/get-places.dto';
+import { SearchPlaceInput, SearchPlaceOutput } from './dtos/search-place.dto';
 import { PlacesService } from './places.service';
 
 @Controller('places')
@@ -16,7 +17,12 @@ export class PlacesController {
     }
 
     @Get('/all')
-    async getPlaces(@Body() getPlacesInput: GetPlacesInput):Promise<GetPlacesOutput> {
+    async getPlaces(@Query() getPlacesInput: GetPlacesInput):Promise<GetPlacesOutput> {
         return this.places.getPlaces(getPlacesInput);
+    }
+
+    @Get('/search')
+    async searchPlace(@Query() searchPlaceInput: SearchPlaceInput): Promise<SearchPlaceOutput> {
+        return this.places.searchPlace(searchPlaceInput);
     }
 }
