@@ -25,11 +25,11 @@ export class PlacesService {
     async createPlace(createPlaceInput: CreatePlaceInput): Promise<CreatePlaceOutput> {
         try {
 
-            const {country, city, longitude, latitude} = createPlaceInput;
+            const {userId, country, city, longitude, latitude} = createPlaceInput;
 
-
+            console.log(userId, country);
             // Temporary User
-            const user = await this.users.findOne(8)
+            const user = await this.users.findOne(userId)
 
             const result = await this.places.save(this.places.create({
                 user,
