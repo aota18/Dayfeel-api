@@ -21,4 +21,12 @@ export class UsersController {
         return this.userService.login(loginInput)
     }
 
+
+    @Post('/test')
+    async text(@Body() input): Promise<any> {
+        return {
+            ok: true
+        }
+    }
+
 }

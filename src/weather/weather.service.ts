@@ -25,8 +25,6 @@ export class WeatherService {
         try {
           const res = await axios.get(`${apiUrl}?lat=${lat}&lon=${lgt}&appid=${this.config.get('WEATHER_API_KEY')}`);
 
-        console.log(res.data);
-
           const queryResult = await this. weatherConditionRepository.createQueryBuilder('weather_condition')
           .select('weather_condition.id', 'id')
           .addSelect('weather_condition.img_url', 'imgUrl')
