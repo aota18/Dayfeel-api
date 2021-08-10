@@ -89,11 +89,7 @@ export class UsersService {
                     user
                 }
             }
-
-
-           
-
-
+        
 
 
         }catch(e){
@@ -103,4 +99,9 @@ export class UsersService {
             }
         }
     }
+
+    // async loginWithApple(): Promise<any> {
+         
+    // }
+
 }
