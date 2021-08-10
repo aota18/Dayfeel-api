@@ -24,6 +24,7 @@ export class UsersController {
 
     @Post('/test')
     async text(@Body() input): Promise<any> {
+        console.log('oauth try')
         return {
             ok: true
         }
