@@ -1,4 +1,5 @@
 import { Body, Controller, Param, Post, Req } from '@nestjs/common';
+import { AuthorizeInput, AuthorizeOutput } from './dtos/authorize.dto';
 import { CreateUserOutput } from './dtos/create-user.dto';
 import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { UsersService } from './users.service';
@@ -28,6 +29,11 @@ export class UsersController {
         return {
             ok: true
         }
+    }
+
+    @Post('/authorize')
+    async authorize(@Body() authorizeInput: AuthorizeInput): Promise<AuthorizeOutput> {
+        return this.userService.authorize(authorizeInput);
     }
 
 }

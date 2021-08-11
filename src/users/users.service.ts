@@ -1,6 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { JwtService } from 'src/jwt/jwt.service';
 import { Repository } from 'typeorm';
+import { AuthorizeInput, AuthorizeOutput } from './dtos/authorize.dto';
 import { CreateUserInput, CreateUserOutput } from './dtos/create-user.dto';
 import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { User } from './entities/user.entity';
@@ -9,7 +11,8 @@ import { User } from './entities/user.entity';
 export class UsersService {
     constructor(
         @InjectRepository(User)
-        private readonly users: Repository<User>
+        private readonly users: Repository<User>,
+        private readonly jwt: JwtService
     ){}
 
     async createUser(createUserInput: CreateUserInput): Promise<CreateUserOutput> {
@@ -100,8 +103,23 @@ export class UsersService {
         }
     }
 
-    // async loginWithApple(): Promise<any> {
-         
-    // }
+  async authorize(authorizeInput: AuthorizeInput): Promise<AuthorizeOutput> {
+
+    try {
+        const {code, token} = authorizeInput;
+        this.jwt.verify(token);
+
+        return {
+            ok: true
+        }
+
+    }catch(e){
+        return {
+            ok: false,
+            error: e
+        }
+    }
+
+  }
 
 }

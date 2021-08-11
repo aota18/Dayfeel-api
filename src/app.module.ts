@@ -7,6 +7,7 @@ import { WeatherModule } from './weather/weather.module';
 import { UsersModule } from './users/users.module';
 import { PlacesModule } from './places/places.module';
 import { User } from './users/entities/user.entity';
+import { JwtModule } from './jwt/jwt.module';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { User } from './users/entities/user.entity';
     // ImageModule,
     WeatherModule,
     UsersModule,
-    PlacesModule
+    PlacesModule,
+    JwtModule.forRoot({})
   ],
   controllers: [],
   providers: [],
