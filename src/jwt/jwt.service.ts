@@ -10,7 +10,8 @@ export class JwtService {
     }
 
     verify(token: string){
-        console.log(jwt.decode(token));
+        const payload = jwt.decode(token);
+        
         return jwt.parse(token);
     }
 }

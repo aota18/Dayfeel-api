@@ -94,7 +94,7 @@ pipeline {
                 sh 'docker container ls -a -fname=weather-forecast-api -q | xargs -r docker container rm'
                 sh 'docker images --no-trunc --all --quiet --filter="dangling=true" | xargs --no-run-if-empty docker rmi'
                 sh '''
-                docker run -p 80:3000 -d -v 'env:/usr/share' --name weather-forecast-api weather-forecast-api
+                docker run -p 3000:3000 -d -v 'env:/usr/share' --name weather-forecast-api weather-forecast-api
                 '''
 
             }
